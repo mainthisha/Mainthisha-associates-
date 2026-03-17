@@ -1,0 +1,59 @@
+﻿
+C:\Users\Mainthisha Associate\OneDrive\Desktop\Mainthisha associates website\mainthisha-associates\src\app\admin\messages\page.tsx
+  14:67  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+C:\Users\Mainthisha Associate\OneDrive\Desktop\Mainthisha associates website\mainthisha-associates\src\app\admin\page.tsx
+  15:44  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+C:\Users\Mainthisha Associate\OneDrive\Desktop\Mainthisha associates website\mainthisha-associates\src\app\admin\services\page.tsx
+  2:10  warning  'revalidatePath' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\Mainthisha Associate\OneDrive\Desktop\Mainthisha associates website\mainthisha-associates\src\app\api\gallery\route.ts
+  11:14  warning  'error' is defined but never used  @typescript-eslint/no-unused-vars
+  30:18  warning  'e' is defined but never used      @typescript-eslint/no-unused-vars
+
+C:\Users\Mainthisha Associate\OneDrive\Desktop\Mainthisha associates website\mainthisha-associates\src\app\api\projects\route.ts
+  22:18  warning  'e' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\Mainthisha Associate\OneDrive\Desktop\Mainthisha associates website\mainthisha-associates\src\app\api\upload\route.ts
+  22:18  warning  'e' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\Mainthisha Associate\OneDrive\Desktop\Mainthisha associates website\mainthisha-associates\src\app\contact\page.tsx
+  14:26  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  34:47  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  34:49  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  34:58  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+C:\Users\Mainthisha Associate\OneDrive\Desktop\Mainthisha associates website\mainthisha-associates\src\app\gallery\page.tsx
+  132:29  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+C:\Users\Mainthisha Associate\OneDrive\Desktop\Mainthisha associates website\mainthisha-associates\src\app\page.tsx
+  135:92   error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  135:249  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+C:\Users\Mainthisha Associate\OneDrive\Desktop\Mainthisha associates website\mainthisha-associates\src\app\testimonials\page.tsx
+  37:37  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  37:58  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+C:\Users\Mainthisha Associate\OneDrive\Desktop\Mainthisha associates website\mainthisha-associates\src\components\ContactForm.tsx
+  38:25  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\Mainthisha Associate\OneDrive\Desktop\Mainthisha associates website\mainthisha-associates\src\components\NewGalleryImageForm.tsx
+  58:25  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+C:\Users\Mainthisha Associate\OneDrive\Desktop\Mainthisha associates website\mainthisha-associates\src\components\NewProjectForm.tsx
+  63:25  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+C:\Users\Mainthisha Associate\OneDrive\Desktop\Mainthisha associates website\mainthisha-associates\src\components\layout\Footer.tsx
+  10:138  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  10:150  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  29:34   error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  29:36   error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  29:45   error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+C:\Users\Mainthisha Associate\OneDrive\Desktop\Mainthisha associates website\mainthisha-associates\src\components\layout\Navbar.tsx
+  12:158  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  12:170  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+✖ 26 problems (18 errors, 8 warnings)
+
