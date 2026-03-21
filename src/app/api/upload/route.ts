@@ -2,9 +2,9 @@ import { NextRequest, NextResponse } from 'next/server';
 import { v2 as cloudinary } from 'cloudinary';
 
 cloudinary.config({
-    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-    api_key: process.env.CLOUDINARY_API_KEY,
-    api_secret: process.env.CLOUDINARY_API_SECRET,
+    cloud_name: 'dpim3ccke',
+    api_key: '439281631121978',
+    api_secret: 'Pk3T3uE0ZaB3qAmowH5CD2PliTI',
 });
 
 export async function POST(request: NextRequest) {
@@ -16,7 +16,6 @@ export async function POST(request: NextRequest) {
             return NextResponse.json({ error: 'No file uploaded' }, { status: 400 });
         }
 
-        // Validate file type
         if (!file.name.match(/\.(jpg|jpeg|png|webp|avif)$/i)) {
             return NextResponse.json({ error: 'Invalid file type. Only JPG, PNG, WEBP, AVIF allowed.' }, { status: 400 });
         }
@@ -24,7 +23,6 @@ export async function POST(request: NextRequest) {
         const bytes = await file.arrayBuffer();
         const buffer = Buffer.from(bytes);
 
-        // Upload to Cloudinary
         const result = await new Promise((resolve, reject) => {
             cloudinary.uploader.upload_stream(
                 { folder: 'mainthisha-associates' },
