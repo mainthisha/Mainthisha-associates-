@@ -3,8 +3,6 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 
-export const revalidate = 0;
-
 // Default image
 const DEFAULT_BLOG_IMAGE =
     "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1000";
