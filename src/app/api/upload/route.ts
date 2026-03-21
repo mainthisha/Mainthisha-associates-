@@ -1,6 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { writeFile, mkdir } from 'fs/promises';
-import path from 'path';
+import { v2 as cloudinary } from 'cloudinary';
+
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 export async function POST(request: NextRequest) {
     try {
@@ -11,32 +16,28 @@ export async function POST(request: NextRequest) {
             return NextResponse.json({ error: 'No file uploaded' }, { status: 400 });
         }
 
-        const bytes = await file.arrayBuffer();
-        const buffer = Buffer.from(bytes);
-
-        // Save to the public/uploads directory securely
-        const uploadDir = path.join(process.cwd(), 'public', 'uploads');
-
-        try {
-            await mkdir(uploadDir, { recursive: true });
-        } catch (e) {
-            // dir already exists
-        }
-
-        // Sanitize filename and strictly enforce safe extensions
-        let filename = file.name.replace(/[^a-zA-Z0-9.-]/g, '_');
-        if (!filename.match(/\.(jpg|jpeg|png|webp|avif)$/i)) {
+        // Validate file type
+        if (!file.name.match(/\.(jpg|jpeg|png|webp|avif)$/i)) {
             return NextResponse.json({ error: 'Invalid file type. Only JPG, PNG, WEBP, AVIF allowed.' }, { status: 400 });
         }
 
-        // Add timestamp to prevent overwriting
-        filename = `${Date.now()}_${filename}`;
+        const bytes = await file.arrayBuffer();
+        const buffer = Buffer.from(bytes);
 
-        const filepath = path.join(uploadDir, filename);
-        await writeFile(filepath, buffer);
+        // Upload to Cloudinary
+        const result = await new Promise((resolve, reject) => {
+            cloudinary.uploader.upload_stream(
+                { folder: 'mainthisha-associates' },
+                (error, result) => {
+                    if (error) reject(error);
+                    else resolve(result);
+                }
+            ).end(buffer);
+        });
 
-        // Return the public URL
-        return NextResponse.json({ url: `/uploads/${filename}` });
+        const uploadResult = result as { secure_url: string };
+        return NextResponse.json({ url: uploadResult.secure_url });
+
     } catch (error) {
         console.error('Error uploading file:', error);
         return NextResponse.json({ error: 'Error uploading file' }, { status: 500 });
