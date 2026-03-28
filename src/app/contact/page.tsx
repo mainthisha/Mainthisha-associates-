@@ -51,7 +51,7 @@ export default function ContactPage() {
                                 <div style={{ fontSize: '2rem', color: 'var(--accent-color)' }}>✉️</div>
                                 <div>
                                     <h4 style={{ marginBottom: '0.3rem' }}>Email</h4>
-                                    <p style={{ color: 'var(--text-muted)' }}>mainthishaassociates@yahoo.com</p>
+                                    <p style={{ color: 'var(--text-muted)' }}>mainthishaassociate@gmail.com</p>
                                 </div>
                             </div>
                         </div>

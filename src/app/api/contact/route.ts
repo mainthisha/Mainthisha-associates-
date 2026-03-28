@@ -7,9 +7,9 @@ export async function POST(request: Request) {
         const body = await request.json();
         const { name, email, phone, message } = body;
 
-        if (!name || !email || !message) {
+        if (!name || !email || !phone || !message) {
             return NextResponse.json(
-                { error: 'Name, email, and message are required fields.' },
+                { error: 'Name, email, phone, and message are required fields.' },
                 { status: 400 }
             );
         }
@@ -44,7 +44,7 @@ export async function POST(request: Request) {
 
                 const mailOptions = {
                     from: emailUser, // Sender address
-                    to: 'mainthishaassociates@yahoo.com', // Recipient address
+                    to: 'mainthishaassociate@gmail.com', // Recipient address
                     subject: `New Contact Form Submission from ${name}`,
                     text: `
 You have a new message from the Mainthisha Associates website contact form.

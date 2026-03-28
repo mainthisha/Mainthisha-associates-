@@ -28,7 +28,7 @@ export default function Footer() {
                         <h4>Contact Info</h4>
                         <p>2/476 'E' Teacher's Colony<br />Chinniampalayam<br />Coimbatore – 641062<br />Tamil Nadu, India</p>
                         <p>Phone: 8675557444</p>
-                        <p>Email: mainthishaassociates@yahoo.com</p>
+                        <p>Email: mainthishaassociate@gmail.com</p>
                     </div>
                 </div>
                 <div className="footer-bottom">

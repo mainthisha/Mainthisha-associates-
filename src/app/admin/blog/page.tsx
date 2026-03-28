@@ -3,6 +3,7 @@ export const revalidate = 0;
 
 import prisma from '@/lib/prisma';
 import { revalidatePath } from 'next/cache';
+import BlogImageUploadField from '@/components/BlogImageUploadField';
 
 export const metadata = {
     title: 'Manage Blog | Admin CMS',
@@ -60,8 +61,8 @@ export default async function AdminBlogPage() {
                             <textarea name="content" className="form-control" style={{ minHeight: '150px' }} required></textarea>
                         </div>
                         <div className="form-group">
-                            <label className="form-label">Header Image URL (Optional)</label>
-                            <input type="text" name="imageUrl" className="form-control" />
+                            <label className="form-label">Header Image (Upload to Cloudinary)</label>
+                            <BlogImageUploadField />
                         </div>
                         <button type="submit" className="admin-btn">Publish Article</button>
                     </form>
