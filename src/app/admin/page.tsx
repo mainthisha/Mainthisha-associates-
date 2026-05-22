@@ -1,6 +1,26 @@
 import prisma from '@/lib/prisma';
+import { cookies } from 'next/headers';
+import { verifyToken } from '@/lib/auth';
+
 export const dynamic = "force-dynamic";
+
 export default async function AdminDashboardPage() {
+    const cookieStore = await cookies();
+    const token = cookieStore.get('admin_session')?.value;
+    let adminName = 'Admin';
+
+    if (token) {
+        const payload = await verifyToken(token);
+        if (payload) {
+            const user = await prisma.user.findUnique({
+                where: { email: payload.email }
+            });
+            if (user && user.name) {
+                adminName = user.name;
+            }
+        }
+    }
+
     const [projectCount, galleryCount, testimonialCount, blogCount] = await Promise.all([
         prisma.project.count(),
         prisma.galleryImage.count(),
@@ -11,8 +31,8 @@ export default async function AdminDashboardPage() {
     return (
         <div>
             <div className="admin-header">
-                <h1>Dashboard Analytics</h1>
-                <p>Overview of your website&apos;s content</p>
+                <h1>Welcome Back, {adminName}!</h1>
+                <p>Overview of your website&apos;s content and analytics</p>
             </div>
 
             <div className="admin-stats-grid">

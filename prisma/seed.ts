@@ -1,7 +1,29 @@
 import { PrismaClient } from '@prisma/client'
+import bcrypt from 'bcryptjs'
 const prisma = new PrismaClient()
 
 async function main() {
+    // Seed Admin User
+    const adminEmail = 'admin@mainthisha.com'
+    const adminExists = await prisma.user.findUnique({
+        where: { email: adminEmail }
+    })
+
+    if (!adminExists) {
+        const hashedPassword = await bcrypt.hash('AdminPassword123!', 10)
+        await prisma.user.create({
+            data: {
+                email: adminEmail,
+                password: hashedPassword,
+                name: 'Mainthisha Admin',
+                role: 'ADMIN'
+            }
+        })
+        console.log('Seeded admin user successfully.')
+    } else {
+        console.log('Admin user already exists. Skipping admin seed.')
+    }
+
     const projects = [
         {
             name: 'Unicorn Valves Private Limited',
@@ -48,7 +70,12 @@ async function main() {
     ]
 
     for (const p of projects) {
-        await prisma.project.create({ data: p })
+        const exists = await prisma.project.findFirst({
+            where: { name: p.name }
+        })
+        if (!exists) {
+            await prisma.project.create({ data: p })
+        }
     }
 
     console.log('Seeded projects successfully.')

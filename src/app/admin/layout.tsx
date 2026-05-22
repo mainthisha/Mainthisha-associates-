@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import { headers, cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
 import './admin.css';
 
 export const metadata = {
@@ -6,11 +8,26 @@ export const metadata = {
     description: 'Manage the website content for Mainthisha Associates',
 };
 
-export default function AdminLayout({
+export default async function AdminLayout({
     children,
 }: {
     children: React.ReactNode
 }) {
+    const headerList = await headers();
+    const pathname = headerList.get('x-pathname') || '';
+
+    // If on login page, render children directly without dashboard structure
+    if (pathname === '/admin/login') {
+        return <>{children}</>;
+    }
+
+    async function handleLogout() {
+        'use server';
+        const cookieStore = await cookies();
+        cookieStore.delete('admin_session');
+        redirect('/admin/login');
+    }
+
     return (
         <div className="admin-container">
             <aside className="admin-sidebar">
@@ -25,8 +42,14 @@ export default function AdminLayout({
                     <Link href="/admin/testimonials">Testimonials</Link>
                     <Link href="/admin/blog">Blog / News</Link>
                     <Link href="/admin/messages">Inquiries/Messages</Link>
+                    <Link href="/admin/settings">Account Settings</Link>
                     <Link href="/" target="_blank" className="view-site-link">View Live Site</Link>
                 </nav>
+                <form action={handleLogout} className="logout-form">
+                    <button type="submit" className="logout-btn">
+                        <span>🚪</span> Logout
+                    </button>
+                </form>
             </aside>
             <main className="admin-main">
                 {children}
